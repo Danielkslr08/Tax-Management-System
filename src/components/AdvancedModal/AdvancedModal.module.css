@@ -1,0 +1,90 @@
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.custom-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 500px;
+  position: relative;
+  overflow: visible;
+  z-index: 1001;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.browser-default {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+:global(.react-datepicker-popper) {
+  z-index: 2000 !important;
+}
+
+@keyframes vibrateAnim {
+  0% { transform: translate(0); }
+  20% { transform: translate(-4px, 4px); }
+  40% { transform: translate(-4px, -4px); }
+  60% { transform: translate(4px, 4px); }
+  80% { transform: translate(4px, -4px); }
+  100% { transform: translate(0); }
+}
+
+.vibrateAnim {
+  animation: vibrateAnim 0.3s linear;
+}
+
+.custom-modal :global(.react-datepicker-wrapper) {
+  display: block !important;
+  width: 100% !important;
+}
+
+.custom-modal :global(.react-datepicker-wrapper input) {
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.custom-modal :global(.react-datepicker-popper) {
+  z-index: 2000 !important;
+}

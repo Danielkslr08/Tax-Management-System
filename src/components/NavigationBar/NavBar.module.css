@@ -1,0 +1,182 @@
+/* Theme colors */
+:root {
+  --navbar-bg: #ffffff;
+  --navbar-text: #2c3e50;
+  --navbar-primary: #00796b;
+  --navbar-hover: #004d40;
+  --navbar-border: #00796b;
+  --navbar-shadow: rgba(0, 0, 0, 0.1);
+  --spacing-unit: 1rem;
+  --navbar-height: 60px;
+}
+
+/* Navbar container */
+.navbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-unit);
+  padding: 0 1rem;
+  background-color: var(--navbar-bg);
+  box-shadow: 0 2px 8px var(--navbar-shadow);
+  height: var(--navbar-height);
+  border-radius: 8px;
+  margin: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* ❌ REMOVE THIS LINE */
+  /* overflow-x: auto; */
+  overflow: hidden;
+}
+/* Title styling */
+.navbar-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--navbar-text);
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 3rem;
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* Wrapper for horizontal scroll */
+.tabs-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
+/* Tabs container */
+.custom-tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  list-style: none;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  min-width: max-content; /* ✅ Critical for scroll */
+}
+
+/* Each <li> */
+.tab-item {
+  flex: 0 0 auto;
+}
+
+/* Link styling */
+.tab {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  color: var(--navbar-text);
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  border-radius: 4px 4px 0 0;
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  background: transparent;
+}
+
+/* Active tab */
+.active {
+  color: var(--navbar-primary);
+  border-bottom: 3px solid var(--navbar-border);
+  background-color: rgba(0, 121, 107, 0.05);
+}
+
+/* Hover state */
+.tab:hover {
+  color: var(--navbar-hover);
+  border-bottom-color: var(--navbar-hover);
+}
+
+/* Responsive: stack layout on small screens */
+@media (max-width: 768px) {
+  .navbar-row {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .navbar-title {
+    margin-left: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .custom-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .tab {
+    padding: 0.75rem 1rem;
+  }
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+/* === Inherit tab look for buttons === */
+.disabledButton,
+.logoutButton {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px 4px 0 0;
+  border: none;
+  border-bottom: 3px solid transparent;
+  user-select: none;
+  white-space: nowrap;
+  background: transparent;
+  font-family: inherit;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Email display: muted but aligned like a tab */
+.disabledButton {
+  cursor: default;
+  color: #888;
+  pointer-events: none;
+  border-bottom-color: transparent;
+}
+
+/* Log out button: fully styled like tab with hover effect */
+.logoutButton {
+  cursor: pointer;
+  color: var(--navbar-text);
+}
+
+.logoutButton:hover {
+  color: var(--navbar-hover);
+  border-bottom-color: var(--navbar-hover);
+  text-decoration: none;
+}
+
+/* Optional: active effect for logout if desired */
+.logoutButton.active {
+  color: var(--navbar-primary);
+  border-bottom: 3px solid var(--navbar-border);
+  background-color: rgba(0, 121, 107, 0.05);
+}
+
+.logoutButton:active {
+  background-color: rgba(0, 0, 0, 0.01); /* Extremely subtle */
+  border-bottom-color: var(--navbar-hover);
+}

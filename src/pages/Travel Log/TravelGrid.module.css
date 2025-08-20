@@ -1,0 +1,213 @@
+.container {
+  padding: 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 5rem);
+  box-sizing: border-box;
+}
+
+.grid-wrapper {
+  flex: 1;
+  padding: 1rem 0;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+}
+
+.properties-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem auto;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.properties-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.properties-text {
+  flex: 1;
+}
+
+.properties-text h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.6rem;
+  color: #2c3e50;
+}
+
+.properties-text p {
+  margin: 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+.properties-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.properties-actions select {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.properties-actions button {
+  padding: 0.5rem 1rem;
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 425;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.properties-actions button:hover {
+  background-color: #6097ce;
+}
+
+.grid-container,
+.ag-theme-alpine {
+  height: 100%;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Remove vertical borders around action buttons */
+.ag-center-cols-container .ag-cell:last-child,
+.ag-center-cols-container .ag-cell:nth-last-child(2) {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Pinned action buttons column: center content & remove border/shadow */
+.ag-pinned-right-cols-container .ag-cell {
+  border-left: none !important;
+  box-shadow: none !important;
+  padding: 0 6px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Action buttons cell cleanup */
+.ag-cell-actionCellRenderer {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+/* Header styling */
+.ag-header {
+  font-weight: 600;
+  background-color: #f5f7fa;
+  border-bottom: 1px solid #ddd;
+  color: #2c3e50;
+  border-radius: 0;
+}
+
+/* Rounded corners for first and last header cells */
+.ag-header-row:first-child .ag-header-cell:first-child {
+  border-top-left-radius: 8px;
+}
+
+.ag-header-row:first-child .ag-header-cell:last-child {
+  border-top-right-radius: 8px;
+}
+
+.ag-header-cell-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Zebra striping */
+.agRowOdd {
+  background-color: #fff;
+}
+
+.agRowEven {
+  background-color: #e9f0f7;
+}
+
+/* Row hover effect */
+.ag-row:hover {
+  background-color: #f3f7fc !important;
+}
+
+/* Action buttons container */
+.actionButtons {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.actionButtons button {
+  padding: 0 0.5rem;
+  min-width: 28px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.actionButtons .btn-small {
+  padding: 0 0.4rem;
+}
+
+.pinnedRow {
+  background-color: #f0f4f8;
+  font-weight: bold;
+  color: #333;
+}
+
+.addButton {
+  min-width: 150px;
+  padding-left: 12px !important;
+  padding-right: 16px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addButton i.material-icons.left {
+  margin-right: 6px;
+  line-height: 24px;
+}
+
+.noLogsOverlay {
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  background: #e3f2fd; /* light blue, match Materialize blue lighten-5 */
+  color: #1565c0; /* blue darken-3 */
+  font-size: 2rem;
+  font-weight: 150;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
