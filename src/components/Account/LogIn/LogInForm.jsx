@@ -29,10 +29,14 @@ class LogIn extends Component {
 
     axios.post('/api/login', {
         email: email,
-        passwordHash: password, // In production, hash this before or on the server
+        password: password, // In production, hash this before or on the server
     })
     .then(response => {
-      const user = response.data.user
+      const user = response.data
+
+      // Save JWT to localStorage
+      localStorage.setItem('token', user.token);
+
       this.props.logUserIn(user)
       
       this.setState({ error: '', email: '', password: '' })

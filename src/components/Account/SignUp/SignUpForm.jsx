@@ -33,10 +33,14 @@ class SignUp extends Component {
 
     axios.post('/api/add-user', {
       email: email,
-      passwordHash: password,
+      password: password,
     })
     .then(response => {
       const user = response.data;
+
+      // Save JWT to localStorage
+      localStorage.setItem('token', user.token);
+
       this.props.logUserIn(user);
     })
     .catch(err => {
