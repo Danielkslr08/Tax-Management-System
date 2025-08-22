@@ -32,9 +32,12 @@ class SignUp extends Component {
     }
 
     axios.post('/api/add-user', {
-      email: email,
-      password: password,
-    })
+        email: email,
+        password: password,
+      },
+      { 
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
     .then(response => {
       const user = response.data;
 

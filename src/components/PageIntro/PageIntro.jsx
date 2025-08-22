@@ -17,8 +17,10 @@ class PageIntro extends Component{
     
     componentDidMount() {
         if (this.props.user) {
-            const encodedEmail = encodeURIComponent(this.props.user.email);
-            axios.get(`/api/user/${encodedEmail}`)
+            axios.get(`/api/user/properties`,
+                { 
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
             .then(res => {
                 const userProperties = res.data.properties.map(property => ({
                     id: property.id,
@@ -98,7 +100,10 @@ class PageIntro extends Component{
     updateCard = (index, updatedCard) => {
         if (this.props.user) {
             const id = this.state.cards[index].id
-            axios.put(`/api/properties/${id}`, updatedCard)
+            axios.put(`/api/properties/${id}`, updatedCard,
+                { 
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
             .then(res => {
                 console.log("Edit successful:", res.data)
                 this.setState(prevState => {
@@ -120,7 +125,10 @@ class PageIntro extends Component{
     deleteCard = (indexToDelete) => {
         if (this.props.user) {
             const id = this.state.cards[indexToDelete].id
-            axios.delete(`/api/properties/${id}`)
+            axios.delete(`/api/properties/${id}`,
+                { 
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
             .then(res => {
                 console.log("Delete successful:", res.data)
                 this.setState(prevState => ({
@@ -152,7 +160,10 @@ class PageIntro extends Component{
             }
 
             if (this.props.user) {
-                axios.post(`/api/properties`, {user_id: this.props.user.id, newCard})
+                axios.post(`/api/properties`, {newCard},
+                { 
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
                 .then(res => {
                     console.log("Success:", res.data)
                     newCard.id = res.data.id

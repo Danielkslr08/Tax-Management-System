@@ -41,7 +41,10 @@ class TravelGrid extends Component {
 
     if (user) {
       axios
-        .get(`/api/logs/user/${encodeURIComponent(user.id)}`)
+        .get(`/api/logs/user`,
+        { 
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        })
         .then((res) => {
           this.setState({ travelLogs: res.data.logs });
           console.log(res.data.logs)
@@ -220,8 +223,13 @@ class TravelGrid extends Component {
     const { selectedId } = this.state;
 
     if (user) {
-      axios
-        .delete(`/api/user/${encodeURIComponent(user.email)}/delete-log-and-get-all`, { data: { logId: selectedId } })
+      axios.delete(
+          `/api/user/delete-log-and-get-all`,
+          { 
+            data: { logId: selectedId },
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+          }
+        )
         .then((res) => {
           this.setState({
             showConfirm: false,
@@ -278,15 +286,13 @@ class TravelGrid extends Component {
       };
 
       axios.put(
-        `/api/user/${encodeURIComponent(user.email)}/edit-log-and-get-all`,
+        `/api/user/edit-log-and-get-all`,
         {
           log: minimalLog,
           propertyId: selectedPropertyIdInModal
         },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
+        { 
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         }
       )
       .then((res) => {
@@ -333,9 +339,12 @@ class TravelGrid extends Component {
       console.log(minimalLog)
 
       axios
-        .post(`/api/user/${encodeURIComponent(user.email)}/add-log-and-get-all`, {
+        .post(`/api/user/add-log-and-get-all`, {
           log: minimalLog,
           propertyId: selectedPropertyIdInModal,
+        },
+        { 
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
         .then((res) => {
           this.setState({

@@ -91,7 +91,10 @@ const TravelLogPage = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`/api/properties/${encodeURIComponent(user.id)}/names`)
+      axios.get(`/api/properties/names`,
+        { 
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        })
       .then(res => {
         setPropertyOptions(res.data.names);
         setIdList(res.data.idList)
