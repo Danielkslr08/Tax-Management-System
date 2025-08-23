@@ -5,7 +5,7 @@ import axios from "axios";
 import PropertyComponent from "../../pages/Properties/Properties";
 import AdvancedModal from "../AdvancedModal/AdvancedModal";
 
-const  API_BASE = `https://tax-management-api-ob9y.onrender.com`
+const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
 
 class PageIntro extends Component{
 
