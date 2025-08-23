@@ -2,6 +2,8 @@ import { Component } from 'react';
 import styles from './LogInForm.module.css';
 import axios from 'axios';
 
+const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+
 class LogIn extends Component {
 
   constructor() {
@@ -27,7 +29,7 @@ class LogIn extends Component {
       return this.setState({ error: 'Please fill in all fields.' })
     }
 
-    axios.post('/api/login', {
+    axios.post(`${API_BASE}/api/login`, {
         email: email,
         password: password, // In production, hash this before or on the server
       })

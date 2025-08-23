@@ -9,6 +9,8 @@ import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
+const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+
 const propertyDistances = {
   [0]: 18,
   [1]: 2,
@@ -41,7 +43,7 @@ class TravelGrid extends Component {
 
     if (user) {
       axios
-        .get(`/api/logs/user`,
+        .get(`${API_BASE}/api/logs/user`,
         { 
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
@@ -224,7 +226,7 @@ class TravelGrid extends Component {
 
     if (user) {
       axios.delete(
-          `/api/user/delete-log-and-get-all`,
+          `${API_BASE}/api/user/delete-log-and-get-all`,
           { 
             data: { logId: selectedId },
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -286,7 +288,7 @@ class TravelGrid extends Component {
       };
 
       axios.put(
-        `/api/user/edit-log-and-get-all`,
+        `${API_BASE}/api/user/edit-log-and-get-all`,
         {
           log: minimalLog,
           propertyId: selectedPropertyIdInModal
@@ -339,7 +341,7 @@ class TravelGrid extends Component {
       console.log(minimalLog)
 
       axios
-        .post(`/api/user/add-log-and-get-all`, {
+        .post(`${API_BASE}/api/user/add-log-and-get-all`, {
           log: minimalLog,
           propertyId: selectedPropertyIdInModal,
         },

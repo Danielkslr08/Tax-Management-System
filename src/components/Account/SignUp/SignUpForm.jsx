@@ -2,6 +2,8 @@ import { Component } from 'react';
 import styles from './SignUpForm.module.css';
 import axios from 'axios';
 
+const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+
 class SignUp extends Component {
   constructor() {
     super();
@@ -31,7 +33,7 @@ class SignUp extends Component {
       return this.setState({ error: 'Passwords do not match.' });
     }
 
-    axios.post('/api/add-user', {
+    axios.post(`${API_BASE}/api/add-user`, {
         email: email,
         password: password,
       })

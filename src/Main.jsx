@@ -14,6 +14,8 @@ import {BrowserRouter as Router, Route, Link, Routes, useLocation, useNavigate} 
 //import 'materialize-css/dist/css/materialize.min.css';
 //import 'materialize-css/dist/js/materialize.min.js';
 
+const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+
 let pageLinks = [
   'Overview',
   'Properties',
@@ -91,7 +93,7 @@ const TravelLogPage = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`/api/properties/names`,
+      axios.get(`${API_BASE}/api/properties/names`,
         { 
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })

@@ -5,6 +5,8 @@ import axios from "axios";
 import PropertyComponent from "../../pages/Properties/Properties";
 import AdvancedModal from "../AdvancedModal/AdvancedModal";
 
+const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+
 class PageIntro extends Component{
 
     constructor(){
@@ -17,7 +19,7 @@ class PageIntro extends Component{
     
     componentDidMount() {
         if (this.props.user) {
-            axios.get(`/api/user/properties`,
+            axios.get(`${API_BASE}/api/user/properties`,
                 { 
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 })
@@ -100,7 +102,7 @@ class PageIntro extends Component{
     updateCard = (index, updatedCard) => {
         if (this.props.user) {
             const id = this.state.cards[index].id
-            axios.put(`/api/properties/${id}`, updatedCard,
+            axios.put(`${API_BASE}/api/properties/${id}`, updatedCard,
                 { 
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 })
@@ -125,7 +127,7 @@ class PageIntro extends Component{
     deleteCard = (indexToDelete) => {
         if (this.props.user) {
             const id = this.state.cards[indexToDelete].id
-            axios.delete(`/api/properties/${id}`,
+            axios.delete(`${API_BASE}/api/properties/${id}`,
                 { 
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 })
@@ -160,7 +162,7 @@ class PageIntro extends Component{
             }
 
             if (this.props.user) {
-                axios.post(`/api/properties`, {newCard},
+                axios.post(`${API_BASE}/api/properties`, {newCard},
                 { 
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 })
