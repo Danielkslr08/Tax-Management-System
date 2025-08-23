@@ -3,6 +3,8 @@ import styles from './SignUpForm.module.css';
 import axios from 'axios';
 
 const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+console.log(import.meta.env.VITE_API_URL)
+console.log(import.meta.env.VITE_PORT)
 
 class SignUp extends Component {
   constructor() {
