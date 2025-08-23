@@ -30,9 +30,6 @@ class LogIn extends Component {
     axios.post('/api/login', {
         email: email,
         password: password, // In production, hash this before or on the server
-      },
-      { 
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
     .then(response => {
       const user = response.data
@@ -41,8 +38,7 @@ class LogIn extends Component {
       localStorage.setItem('token', user.token);
 
       this.props.logUserIn(user)
-      
-      this.setState({ error: '', email: '', password: '' })
+
     })
     .catch(err => {
       if (err.response && err.response.data && err.response.data.error) {

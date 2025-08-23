@@ -34,9 +34,6 @@ class SignUp extends Component {
     axios.post('/api/add-user', {
         email: email,
         password: password,
-      },
-      { 
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
     .then(response => {
       const user = response.data;
@@ -45,17 +42,11 @@ class SignUp extends Component {
       localStorage.setItem('token', user.token);
 
       this.props.logUserIn(user);
+
     })
     .catch(err => {
       // err.response.data.error contains your custom message
       this.setState({ error: err.response?.data?.error || 'Something went wrong.' });
-    });
-
-    this.setState({
-      email: '',
-      password: '',
-      confirmPassword: '',
-      error: '',
     });
   };
 
