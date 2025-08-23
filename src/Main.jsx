@@ -14,7 +14,7 @@ import {BrowserRouter as Router, Route, Link, Routes, useLocation, useNavigate} 
 //import 'materialize-css/dist/css/materialize.min.css';
 //import 'materialize-css/dist/js/materialize.min.js';
 
-const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+const  API_BASE = `https://tax-management-api-ob9y.onrender.com`
 
 let pageLinks = [
   'Overview',

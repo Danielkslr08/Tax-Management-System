@@ -9,7 +9,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
+const  API_BASE = `https://tax-management-api-ob9y.onrender.com`
 
 const propertyDistances = {
   [0]: 18,
