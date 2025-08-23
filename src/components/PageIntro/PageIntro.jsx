@@ -29,7 +29,7 @@ class PageIntro extends Component{
                     name: property.name,
                     address: property.address,
                     distance: property.distance,
-                    propertyType: property.propertyType
+                    propertyType: property.propertytype
                 }));
                 this.setState({ cards: userProperties });
             })
