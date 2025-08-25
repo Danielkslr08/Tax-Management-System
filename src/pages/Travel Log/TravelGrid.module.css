@@ -1,3 +1,4 @@
+/* ================= Desktop & General Styles ================= */
 .container {
   padding: 0 2rem 2rem;
   display: flex;
@@ -203,11 +204,73 @@
 .noLogsOverlay {
   padding: 2rem 3rem;
   border-radius: 12px;
-  background: #e3f2fd; /* light blue, match Materialize blue lighten-5 */
-  color: #1565c0; /* blue darken-3 */
+  background: #e3f2fd;
+  color: #1565c0;
   font-size: 2rem;
   font-weight: 150;
   font-family: "Segoe UI", sans-serif;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= Mobile Responsive Styles ================= */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    min-height: calc(100vh - 5rem); /* keep full viewport minus header */
+  }
+
+  .properties-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .properties-left {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .properties-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .properties-actions select,
+  .properties-actions button {
+    width: 100%;
+  }
+
+  .properties-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .properties-text p {
+    font-size: 0.9rem;
+  }
+
+  .grid-wrapper {
+    padding: 0.5rem 0;
+    overflow-x: auto;
+  }
+
+  .grid-container,
+  .ag-theme-alpine {
+    font-size: 0.85rem;
+    border-radius: 4px;
+  }
+
+  .addButton {
+    min-width: 100%;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .noLogsOverlay {
+    font-size: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
 }

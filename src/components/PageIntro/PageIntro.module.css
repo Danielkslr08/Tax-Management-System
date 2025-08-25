@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Container for the entire section */
+/* Container for the entire header section */
 .properties-header {
   display: flex;
   justify-content: space-between;
@@ -15,11 +15,14 @@
   padding: 1rem 2rem;
   background-color: #f8f9fb00;
   border-radius: 8px;
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 /* Left-side text block */
 .properties-text {
-  flex: 1;
+  flex: 1 1 100%;
+  min-width: 200px;
+  margin-bottom: 0.5rem; /* spacing for wrapped layout */
 }
 
 .properties-text h2 {
@@ -40,6 +43,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* wrap buttons on small screens */
 }
 
 /* Button styling */
@@ -55,12 +60,14 @@
   gap: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .properties-action button:hover {
   background-color: #6097ce;
 }
 
+/* Custom modal overlay */
 .custom-modal-overlay {
   position: fixed;
   top: 0;
@@ -72,23 +79,32 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem; /* ensures modal doesn't touch edges on mobile */
 }
 
+/* Custom modal content */
 .custom-modal {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  min-width: 300px;
+  width: 100%;
   max-width: 500px;
+  min-width: 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow-y: auto;
+  max-height: 90vh; /* prevent overflow on mobile */
 }
 
+/* Modal footer */
 .modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
   margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
+/* Modal form */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -105,11 +121,74 @@
   font-weight: 500;
 }
 
-.browser-default{
+/* Select inputs fallback */
+.browser-default {
   border: 1px solid black;
   border-radius: 4px;
   padding: 0.5rem;
   font-size: 1rem;
   background-color: white;
   color: black;
+}
+
+/* MOBILE RESPONSIVE STYLING */
+@media (max-width: 768px) {
+
+  /* Reduce padding in header */
+  .properties-header {
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .properties-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .properties-text p {
+    font-size: 0.9rem;
+  }
+
+  .properties-action button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .custom-modal {
+    padding: 1.5rem;
+    max-width: 90%;
+    min-width: 260px;
+  }
+
+  .modal-footer {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+/* EXTRA SMALL MOBILE STYLING */
+@media (max-width: 480px) {
+  .properties-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .properties-action {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .properties-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .properties-text p {
+    font-size: 0.85rem;
+  }
+
+  .properties-action button {
+    width: 100%;
+    justify-content: center;
+  }
 }

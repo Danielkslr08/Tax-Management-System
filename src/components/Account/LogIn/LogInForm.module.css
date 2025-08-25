@@ -1,3 +1,4 @@
+/* -------------------- CONTAINER -------------------- */
 .container {
   max-width: 420px;
   margin: 80px auto;
@@ -6,8 +7,11 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
+  width: 90%; /* scales on mobile */
+  box-sizing: border-box;
 }
 
+/* -------------------- FORM -------------------- */
 .form {
   display: flex;
   flex-direction: column;
@@ -21,6 +25,7 @@
   color: #333;
 }
 
+/* -------------------- LABEL & INPUT -------------------- */
 .label {
   margin-bottom: 16px;
   font-size: 14px;
@@ -34,14 +39,17 @@
   border-radius: 8px;
   font-size: 14px;
   width: 100%;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
 }
 
 .input:focus {
   border-color: #007bff;
   outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
 }
 
+/* -------------------- BUTTON -------------------- */
 .button {
   padding: 12px;
   margin-top: 16px;
@@ -51,13 +59,15 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .button:hover {
   background-color: #005dc1;
+  transform: translateY(-1px);
 }
 
+/* -------------------- ERROR MESSAGE -------------------- */
 .error {
   background-color: #ffe0e0;
   color: #cc0000;
@@ -65,4 +75,66 @@
   border-radius: 6px;
   margin-bottom: 16px;
   font-size: 14px;
+}
+
+/* -------------------- RESPONSIVE STYLING -------------------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin: 50px auto;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .label {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .input {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .error {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 15px;
+    margin: 30px auto;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .input {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .error {
+    font-size: 12px;
+    padding: 6px;
+  }
 }
