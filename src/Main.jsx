@@ -7,10 +7,13 @@ import TextBox from './TextBox/TextBox.jsx'
 import HomePage from './pages/Home/Home.jsx'
 import PageIntro from './components/PageIntro/PageIntro.jsx'
 import TravelGrid from './pages/Travel Log/TravelGrid.jsx'
+import Receipts from './pages/Receipts/Receipts.jsx'
 import SignUp from './components/Account/SignUp/SignUpForm.jsx'
 import LogIn from './components/Account/LogIn/LogInForm.jsx'
 import UserContext from './components/Account/UserContext.jsx'
 import {BrowserRouter as Router, Route, Link, Routes, useLocation, useNavigate} from 'react-router-dom'
+
+import { scheduleTokenRemoval, getToken, removeToken, isTokenExpired } from './components/Account/TokenManager.jsx'
 //import 'materialize-css/dist/css/materialize.min.css';
 //import 'materialize-css/dist/js/materialize.min.js';
 
@@ -24,6 +27,34 @@ let pageLinks = [
   'Sign Up',
   'Log In',
 ];
+
+const defaultOptions = [
+  "Suburban Bungalow",
+  "Downtown Loft",
+  "Lakeview Rental",
+  "University Flat",
+  "Uptown Duplex",
+  "City Condo",
+  "Mountain House",
+  "Garden Suite",
+  "Harbourview Apartment"
+]
+
+const defaultOptions2 = [
+  {id: 1, name: "Suburban Bungalow"},
+  {id: 2, name: "Downtown Loft"},
+  {id: 3, name: "Lakeview Rental"},
+  {id: 4, name: "University Flat"},
+  {id: 5, name: "Uptown Duplex"},
+  {id: 6, name: "City Condo"},
+  {id: 7, name: "Mountain House"},
+  {id: 8, name: "Garden Suite"},
+  {id: 9, name: "Harbourview Apartment"}
+]
+
+const defaultIds = [
+  0, 1, 2, 3, 4, 5, 6, 7, 8
+]
 
 const NavBarWrapper = () => {
   const { user , setUser} = useContext(UserContext)
@@ -72,22 +103,7 @@ const PropertiesPage = () => {
 const TravelLogPage = () => {
 
   const { user } = useContext(UserContext)
-  
-  const defaultOptions = [
-    "Suburban Bungalow",
-    "Downtown Loft",
-    "Lakeview Rental",
-    "University Flat",
-    "Uptown Duplex",
-    "City Condo",
-    "Mountain House",
-    "Garden Suite",
-    "Harbourview Apartment"
-  ]
 
-  const defaultIds = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8
-  ]
   const [propertyOptions, setPropertyOptions] = useState(user ? [] : defaultOptions);
   const [idList, setIdList] = useState(user ? [] : defaultIds);
 
@@ -152,6 +168,15 @@ const TravelLogPage = () => {
   )
 };
 
+const ReceiptsPage = () => {
+
+  const { user } = useContext(UserContext)
+
+  return (
+    <Receipts user={user} defaultOptions={defaultOptions2}/>
+  )
+}
+
 const LogInPage = () => {
   const { user , setUser} = useContext(UserContext)
   const navigate = useNavigate()
@@ -198,6 +223,24 @@ const Application = () => {
 
   const [user, setUser] = useState(null)
 
+   // Run on page load
+  useEffect(() => {
+    const token = getToken();
+    if (token && isTokenExpired(token)) {
+      removeToken(); // remove expired token
+    } else if (token) {
+      // Optionally schedule auto-removal
+      if (!user) {
+        removeToken();
+      } else {
+        scheduleTokenRemoval(token);
+      }
+      // You can also set user from token here
+      //const payload = JSON.parse(atob(token.split('.')[1]));
+      //setUser({ id: payload.id, email: payload.email });
+    }
+  }, []);
+
   return(
     <UserContext.Provider value={{ user, setUser}}>
       <NavBarWrapper />
@@ -205,7 +248,7 @@ const Application = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/Properties" element={<PropertiesPage key="Properties" />} />
         <Route exact path="/Travel Log" element={<TravelLogPage key="TravelLog" />} />
-        <Route exact path="/Receipts" element={<h1>Receipts Page</h1>} />
+        <Route exact path="/Receipts" element={<ReceiptsPage/>} />
         <Route exact path="/Sign Up" element={<SignUpPage />} />
         <Route exact path="/Log In" element={<LogInPage />} />
       </Routes>

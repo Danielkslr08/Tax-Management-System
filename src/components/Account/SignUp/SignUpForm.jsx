@@ -2,6 +2,8 @@ import { Component } from 'react';
 import styles from './SignUpForm.module.css';
 import axios from 'axios';
 
+import { scheduleTokenRemoval } from '../TokenManager';
+
 const API_BASE = import.meta.env.VITE_API_URL || `http://localhost:${import.meta.env.VITE_PORT || 3002}`;
 
 console.log(import.meta.env.VITE_API_URL)
@@ -46,7 +48,11 @@ class SignUp extends Component {
       // Save JWT to localStorage
       localStorage.setItem('token', user.token);
 
-      this.props.logUserIn(user);
+      // Schedule token removal
+      scheduleTokenRemoval(user.token);
+
+      const payload = JSON.parse(atob(user.token.split('.')[1]));
+      this.props.logUserIn({ id: payload.id, email: payload.email })
 
     })
     .catch(err => {
