@@ -217,7 +217,7 @@
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
-    min-height: calc(200vh - 5rem); /* keep full viewport minus header */
+    min-height: calc(135vh - 5rem); /* keep full viewport minus header */
   }
 
   .properties-header {
@@ -255,8 +255,6 @@
   .grid-wrapper {
     padding: 0.5rem 0;
     overflow-x: auto;
-    flex: none;         /* Don’t let it auto-scale */
-    height: 150vh;      /* Force it taller */
   }
 
   .grid-container,
