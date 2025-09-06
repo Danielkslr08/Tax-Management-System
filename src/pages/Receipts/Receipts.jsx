@@ -403,9 +403,9 @@ class Receipts extends Component {
             <div className={styles.fileGroup}>
               {isMobile ? (
                 <>
-                  {/* Mobile button */}
+                  {/* Mobile: both camera and file selection */}
                   <label htmlFor="camera-upload" className={styles.fileLabel}>
-                    📷 Scan / Upload Receipt
+                    📷 Scan Receipt
                   </label>
                   <input
                     id="camera-upload"
@@ -415,12 +415,23 @@ class Receipts extends Component {
                     capture="environment"
                     onChange={this.handleFileChange}
                   />
+
+                  <label htmlFor="file-upload-mobile" className={styles.fileLabel}>
+                    📁 Choose File
+                  </label>
+                  <input
+                    id="file-upload-mobile"
+                    type="file"
+                    className={styles.fileInput}
+                    accept=".png,.jpg,.jpeg,.gif,.pdf,.doc,.docx,.txt,.csv,.xlsx,.zip"
+                    onChange={this.handleFileChange}
+                  />
                 </>
               ) : (
                 <>
-                  {/* Desktop button */}
+                  {/* Desktop: only choose file */}
                   <label htmlFor="file-upload" className={styles.fileLabel}>
-                    Choose File
+                    📁 Choose File
                   </label>
                   <input
                     id="file-upload"
@@ -431,7 +442,6 @@ class Receipts extends Component {
                   />
                 </>
               )}
-
               {this.state.selectedFile ? (
                 <span>Selected: {this.state.selectedFile.name}</span>
               ) : (
