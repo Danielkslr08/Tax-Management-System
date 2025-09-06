@@ -401,47 +401,18 @@ class Receipts extends Component {
 
           <div className={styles.uploadSection}>
             <div className={styles.fileGroup}>
-              {isMobile ? (
-                <>
-                  {/* Mobile: both camera and file selection */}
-                  <label htmlFor="camera-upload" className={styles.fileLabel}>
-                    📷 Scan Receipt
-                  </label>
-                  <input
-                    id="camera-upload"
-                    type="file"
-                    className={styles.fileInput}
-                    accept="image/*"
-                    capture="environment"
-                    onChange={this.handleFileChange}
-                  />
 
-                  <label htmlFor="file-upload-mobile" className={styles.fileLabel}>
-                    📁 Choose File
-                  </label>
-                  <input
-                    id="file-upload-mobile"
-                    type="file"
-                    className={styles.fileInput}
-                    accept=".png,.jpg,.jpeg,.gif,.pdf,.doc,.docx,.txt,.csv,.xlsx,.zip"
-                    onChange={this.handleFileChange}
-                  />
-                </>
-              ) : (
-                <>
-                  {/* Desktop: only choose file */}
-                  <label htmlFor="file-upload" className={styles.fileLabel}>
-                    📁 Choose File
-                  </label>
-                  <input
-                    id="file-upload"
-                    type="file"
-                    className={styles.fileInput}
-                    accept=".png,.jpg,.jpeg,.gif,.pdf,.doc,.docx,.txt,.csv,.xlsx,.zip"
-                    onChange={this.handleFileChange}
-                  />
-                </>
-              )}
+              <label htmlFor="file-upload-mobile" className={styles.fileLabel}>
+                📁 Choose File
+              </label>
+              <input
+                id="file-upload-mobile"
+                type="file"
+                className={styles.fileInput}
+                accept=".png,.jpg,.jpeg,.gif,.pdf,.doc,.docx,.txt,.csv,.xlsx,.zip"
+                onChange={this.handleFileChange}
+              />
+            
               {this.state.selectedFile ? (
                 <span>Selected: {this.state.selectedFile.name}</span>
               ) : (
