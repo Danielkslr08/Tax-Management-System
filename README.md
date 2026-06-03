@@ -1,12 +1,36 @@
-# React + Vite
+# Tax Management System (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is the frontend of a full-stack Tax Management System built using React. It allows users to manage tax-related records through an interactive web interface connected to a Node.js/Express backend API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+* Create, view, update, and delete tax records
+* Responsive UI built with React
+* API integration with backend server
+* Real-time data updates from database
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+* React
+* JavaScript / TypeScript (if applicable)
+* CSS / UI styling library (if applicable)
+* Axios (API communication)
+
+## System Architecture
+
+Frontend communicates with a Node.js + Express backend API, which connects to a PostgreSQL database (via Supabase).
+
+## Links
+
+* Frontend Repository: https://github.com/Danielkslr08/Tax-Management-System
+* Backend API Repository: https://github.com/Danielkslr08/Tax-Management-API
+* Live Application: https://YOUR-RENDER-URL-HERE
+
+## How to Run Locally
+
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm run dev`
+4. Ensure backend API is running and configured in environment variables
